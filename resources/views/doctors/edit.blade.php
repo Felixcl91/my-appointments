@@ -5,7 +5,7 @@
         <div class="card-header border-0">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="mb-0">New Doctor</h3>
+              <h3 class="mb-0">Edit Doctor</h3>
             </div>
             <div class="col text-right">
               <a href="{{ url('doctors') }}" class="btn btn-sm btn-default">
@@ -26,37 +26,38 @@
             </ul>
           @endif
 
-          <form action="{{ url('doctors') }}" method="POST">
+          <form action="{{ url('doctors/'.$doctor->id) }}" method="POST">
             @csrf
+            @method('PUT')
           <div class="form-group">
             <label for="name">Name doctor</label>
             <input type="text" name="name" class="form-control" 
-            value="{{ old('name') }}" required="">
+            value="{{ old('name', $doctor->name) }}" required="">
           </div>
           <div class="form-group">
             <label for="email">E-mail</label>
             <input type="text" name="email" class="form-control" 
-              value="{{ old('email') }}" >
+              value="{{ old('email', $doctor->email) }}" >
           </div>
           <div class="form-group">
             <label for="dni">Dni</label>
             <input type="text" name="dni" class="form-control" 
-              value="{{ old('dni') }}" >
+              value="{{ old('dni', $doctor->dni) }}" >
           </div>
           <div class="form-group">
             <label for="address">Direction</label>
             <input type="text" name="address" class="form-control" 
-              value="{{ old('address') }}">
+              value="{{ old('address', $doctor->address) }}">
           </div>
           <div class="form-group">
             <label for="phone">Phone</label>
             <input type="text" name="phone" class="form-control" 
-              value="{{ old('phone') }}" >
+              value="{{ old('phone', $doctor->phone) }}" >
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
-            <input type="text" name="password" class="form-control" 
-              value="{{ str_random(6) }}" >
+            <label for="password">Password </label>
+            <input type="text" name="password" class="form-control">
+            <em>Ingrese un valor nuevo si desea cambiar la contraseña</em>
           </div>
             <button type="submit" class="btn btn-primary">
               Save
