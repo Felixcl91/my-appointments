@@ -28,6 +28,11 @@
               <i class="ni ni-satisfied text-info"></i> Patients
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/appointments">
+              <i class="ni ni-time-alarm text-primary"></i> Doctor appointments
+            </a>
+          </li>
     @elseif (auth()->user()->role == 'doctor')
           <li class="nav-item">
             <a class="nav-link" href="/schedule">
@@ -35,7 +40,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/doctors">
+            <a class="nav-link" href="/appointments">
               <i class="ni ni-time-alarm text-primary"></i> My appointments
             </a>
           </li>
@@ -46,13 +51,13 @@
           </li>
     @else {{--patient--}}
           <li class="nav-item">
-            <a class="nav-link" href="/patients">
+            <a class="nav-link" href="/appointments/create">
               <i class="ni ni-send tex-danger"></i> Book appointment
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/patients">
-              <i class="ni ni-satisfied text-info"></i> My appointments
+            <a class="nav-link" href="/appointments">
+              <i class="ni ni-time-alarm text-primary"></i> My appointments
             </a>
           </li>
     @endif
@@ -75,12 +80,12 @@
         <!-- Navigation -->
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ url('/charts/appointments/line') }}">
               <i class="ni ni-palette text-red"></i> Frecuencia de citas
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ url('/charts/doctors/column') }}">
               <i class="ni ni-spaceship"></i> Médicos más activos
             </a>
           </li>
