@@ -20,7 +20,7 @@ class ScheduleController extends Controller
     		'doctor_id' => 'required|exists:users,id'
     	];
 
-    	$request->validate($request, $rules);
+    	$request->validate($rules);
 
     	//dd($day);
     	$date = $request->input('date');	
