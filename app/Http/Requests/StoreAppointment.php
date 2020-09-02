@@ -38,8 +38,7 @@ class StoreAppointment extends FormRequest
     public function withValidator($validator)
     {
         $validator->after(function($validator) {
-
-            $date = $request->input('scheduled_date');
+            $date = $this->input('scheduled_date');
             $doctorId = $request->input('doctor_id');
             $scheduled_time = $request->input('scheduled_time');
 
@@ -49,7 +48,7 @@ class StoreAppointment extends FormRequest
 
             $start = new Carbon($scheduled_time);
 
-            if (!$scheduleService->isAvailableInterval($date, $doctorId, $start)) {
+            if (!$this->scheduleService->isAvailableInterval($date, $doctorId, $start)) {
                 $validator->errors()
                     ->add('available_time', 'La hora reservada ya se encuentra reservada por
                         otro paciente.');
