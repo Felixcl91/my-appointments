@@ -54,7 +54,7 @@ class StoreAppointment extends FormRequest
                     ->add('available_time', 'La hora reservada ya se encuentra reservada por
                         otro paciente.');
             }
-        }
+        });
 
     }
 }
