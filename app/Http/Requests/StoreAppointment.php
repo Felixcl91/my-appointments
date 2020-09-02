@@ -39,8 +39,8 @@ class StoreAppointment extends FormRequest
     {
         $validator->after(function($validator) {
             $date = $this->input('scheduled_date');
-            $doctorId = $request->input('doctor_id');
-            $scheduled_time = $request->input('scheduled_time');
+            $doctorId = $this->input('doctor_id');
+            $scheduled_time = $this->input('scheduled_time');
 
             if (!$date || !$doctorId || !$scheduled_time) {
                 return;
